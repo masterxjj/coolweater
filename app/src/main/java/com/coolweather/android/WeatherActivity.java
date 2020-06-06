@@ -24,6 +24,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.coolweather.android.gson.Forecast;
 import com.coolweather.android.gson.Weather;
+import com.coolweather.android.service.AutoUpdateService;
 import com.coolweather.android.util.HttpUtil;
 import com.coolweather.android.util.Utility;
 
@@ -195,8 +196,6 @@ public class WeatherActivity extends AppCompatActivity {
         });
         loadBingPic();
     }
-
-
     /**
      * 处理并展示Weather实体类中的数据。
      */
@@ -230,8 +229,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent=new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
-
-
-
 }
